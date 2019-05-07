@@ -15,7 +15,7 @@ public class RoshamboApp {
 		Scanner scan = new Scanner(System.in); 
 		String name = scan.next(); 
 
-		HumanPlayer human = new HumanPlayer(); //
+		HumanPlayer human = new HumanPlayer(); //will generate the human enums
 		
 		System.out.println("Would you like to play against TheJets or TheSharks? (enter j or s for each respectively)");
 		char userChoice = Validator.validateGameChoice2(scan); // a modification of the yes or no continue validator, but uses j or s instead of y or n
@@ -33,9 +33,12 @@ public class RoshamboApp {
 		Roshambo humanChoice = null; // these will generate the Roshambo values
 		Roshambo opponentChoice = null; 
 		
+		
 		while (playAgain == 'y') {
 			humanChoice = human.generateRoshambo(); 
 			opponentChoice = opponent.generateRoshambo(); 
+			
+			
 			System.out.println(name + ": " + humanChoice); 
 			System.out.println(opponentsName + ": " + opponentChoice);   
 			if (humanChoice == opponentChoice) {
@@ -45,17 +48,18 @@ public class RoshamboApp {
 				System.out.println(name + " wins!"); 
 				winCount++; 
 			}
-			
 			if ((humanChoice == Roshambo.PAPER && opponentChoice == Roshambo.SCISSORS) || (humanChoice == Roshambo.ROCK && opponentChoice == Roshambo.PAPER)|| (humanChoice == Roshambo.SCISSORS && opponentChoice == Roshambo.ROCK)) {
 				System.out.println(opponentsName + " wins!"); 
 				lossCount++; 
 			}
 			
+			
 			System.out.println("Would you like to play again?");
 			playAgain = Validator.validateChar(scan); 
+			
 			if (playAgain == 'n') {
 				System.out.println("Thank you for playing! Your score was: ");
-				System.out.println(winCount + " wins."); 
+				System.out.println(winCount + " wins."); //extended challenge
 				System.out.println(lossCount + " losses."); 
 			}
 		}

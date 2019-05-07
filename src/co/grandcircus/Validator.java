@@ -134,9 +134,6 @@ public class Validator {
 		String userInput = validateString(scan); 
 		while (!(userInput.equalsIgnoreCase("Rock") || userInput.equalsIgnoreCase("Paper") || userInput.equalsIgnoreCase("Scissors")) ) {
 			System.out.println("Sorry, invalid input. Please enter 'Rock', 'Paper', or 'Scissors' again: "); 
-			while (scan.hasNext()) {
-				scan.nextLine(); 
-			}
 			userInput = validateString(scan); 
 		}
 		return userInput; 
